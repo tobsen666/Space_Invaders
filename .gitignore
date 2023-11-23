@@ -1,0 +1,7 @@
+# Ignore build and dist directory
+build/
+dist/
+
+# Ignore unnecessary python files
+main_original.py
+
