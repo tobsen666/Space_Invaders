@@ -79,6 +79,8 @@ explosionX = 0
 explosionY = 480
 explosionY_change = -0.3
 
+score = 0
+
 
 def player(x, y):
     screen.blit(player_image, (x, y))
@@ -100,8 +102,18 @@ def explosion(x, y):
     # while timer != 1:
     # end = time.time()
     # timer = round(end - now)
-    for i in range(500):
+    global score
+    score += 1
+    for ex in range(500):
         screen.blit(explosion_image, (x, y))
+
+
+font = pygame.font.Font(None, 36)  # You can adjust the font size
+
+
+def show_score():
+    score_display = font.render("Score: " + str(score), True, (255, 255, 255))
+    screen.blit(score_display, (10, 10))
 
 
 # game loop (contains all constantly running things)
@@ -172,4 +184,8 @@ while running:
         missileY += missileY_change
 
     player(playerX, playerY)
+
+    # Show the score
+    show_score()
+
     pygame.display.update()
